@@ -1,0 +1,53 @@
+html, body {
+    background: #000;
+    height: 98vh;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    width: 99%;
+}
+
+#background {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 5px solid white;
+    border-radius: 1%;
+}
+
+.battlefield {
+    /*border: 1px solid white;*/ /* Debug */
+    border-radius: 1%;
+    height: 480px;
+    width: 50%;
+    margin: auto 0 0;
+    text-align: right;
+}
+
+.battlefield td {
+    /*border: 1px solid white;*/ /* Debug */
+    margin: 0;
+    padding: 0;
+}
+
+.enemy {
+    text-align: left;
+}
+
+.enemy img {
+    width: 150px;
+    height: 150px;
+}
+
+.space {
+    width: 100%;
+}
+
+.hero img {
+    width: 75px;
+    height: 75px;
+}

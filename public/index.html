@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantasy</title>
+    <link rel="stylesheet" href="/styles/style.css">
+  </head>
+  <body id="background">
+    <table class="battlefield">
+      <tr>
+        <td class="enemy" rowspan="2"><img src="/random-enemy" /></td>
+        <td class="enemy" rowspan="2"><img src="/random-enemy" /></td>
+        <td class="enemy" rowspan="2"><img src="/random-enemy" /></td>
+        <td class="space"></td>
+        <td class="hero"><img class="sprite" data-row="0" src="/sprite/0/0" /></td>
+      </tr>
+      <tr>
+        <td class="space"></td>
+        <td class="hero"><img class="sprite" data-row="1" src="/sprite/1/0" /></td>
+      </tr>
+      <tr>
+        <td class="enemy" rowspan="2"><img src="/random-enemy" /></td>
+        <td class="enemy" rowspan="2"><img src="/random-enemy" /></td>
+        <td class="enemy" rowspan="2"><img src="/random-enemy" /></td>
+        <td class="space"></td>
+        <td class="hero"><img class="sprite" data-row="2" src="/sprite/2/0" /></td>
+      </tr>
+      <tr>
+        <td class="space"></td>
+        <td class="hero"><img class="sprite" data-row="3" src="/sprite/3/0" /></td>
+      </tr>
+      <tr>
+        <td class="enemy" rowspan="2"><img src="/random-enemy" /></td>
+        <td class="enemy" rowspan="2"><img src="/random-enemy" /></td>
+        <td class="enemy" rowspan="2"><img src="/random-enemy" /></td>
+        <td class="space"></td>
+        <td class="hero"><img class="sprite" data-row="4" src="/sprite/4/0" /></td>
+      </tr>
+      <tr>
+        <td class="space"></td>
+        <td class="hero"><img class="sprite" data-row="5" src="/sprite/5/0" /></td>
+      </tr>
+    </table>
+    <script>
+      const totalFrames = 10;
+      let currentFrame = 0;
+      const sprites = document.querySelectorAll('.sprite');
+
+      // Function to switch between frames for animation
+      function switchSprite() {
+        sprites.forEach((sprite) => {
+          const row = sprite.getAttribute('data-row');
+          sprite.src = `/sprite/${row}/${currentFrame}`;
+        });
+
+        // Move to the next frame
+        currentFrame = (currentFrame + 1) % totalFrames;
+      }
+
+      // Start switching sprites as soon as the page loads
+      window.onload = function() {
+        setInterval(switchSprite, 500);
+      };
+
+      // Fetch a random background image and apply it
+      fetch('/random-background')
+        .then(response => response.url)
+        .then(imageUrl => {
+          document.getElementById('background').style.backgroundImage = `url(${imageUrl})`;
+        })
+        .catch(err => console.error('Error loading background image:', err));
+    </script>
+  </body>
+</html>
